@@ -19,16 +19,13 @@ function App() {
   const agregarInput = valor => {
     setInput(input + valor);
   };
-  
+  function OperacionMatematicaValida(input) {
+    const regex = /^[0-9]+([+\-*/][0-9]+)*$/;
+    return regex.test(input);
+  };
+  const validacion = OperacionMatematicaValida(input);
   const calcularResultado = () => {
-
-    const inputNopermitidos = input.match((/[^0-9+*/-]/g));
-  
-    if (inputNopermitidos ) {
-      toast.error("Por favor ingrese valores validos");
-    }
-    else{
-      setInput(input.replace(/[^0-9+*/-]/g, ''));
+    if (validacion) {
       if(input){
         setInput(evaluate(input)); 
         indicador = false;
@@ -37,7 +34,9 @@ function App() {
         toast.error("Por favor ingrese valores para calcular");
       }
     }
-    
+    else{
+      toast.error("Por favor ingrese una operacion valida");
+    }
   };
 
   const EliminarCaracter = () => {
