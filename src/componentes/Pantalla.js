@@ -7,6 +7,7 @@ const Pantalla = ({ input, NuevoInput }) =>{
     NuevoInput(e.target.value);
     console.log(e.target.value);
   };
+  
   return(
   <input
     className="input"

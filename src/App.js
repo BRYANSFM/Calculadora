@@ -6,29 +6,40 @@ import { EliminarUltimoCaracter } from "./componentes/EliminarUltimoCaracter";
 import { Logo } from "./componentes/Logo"
 import { useState } from "react";
 import { evaluate } from 'mathjs'; 
+import toast, { Toaster } from 'react-hot-toast';
 
 
 let indicador = true;
 
 
 function App() {
-
+  
   const [input, setInput] = useState('');
-
+ 
   const agregarInput = valor => {
     setInput(input + valor);
   };
   
-
   const calcularResultado = () => {
-    if(input){
-      setInput(evaluate(input));
-      indicador = false;
+
+    const inputNopermitidos = input.match((/[^0-9+*/-]/g));
+  
+    if (inputNopermitidos ) {
+      toast.error("Por favor ingrese valores validos");
     }
     else{
-      alert("Por favor ingrese valores para calcular");
+      setInput(input.replace(/[^0-9+*/-]/g, ''));
+      if(input){
+        setInput(evaluate(input)); 
+        indicador = false;
+      }
+      else{
+        toast.error("Por favor ingrese valores para calcular");
+      }
     }
+    
   };
+
   const EliminarCaracter = () => {
     if (indicador) {
       setInput(input.slice(0, -1));
@@ -43,6 +54,10 @@ function App() {
 
   return (
     <div className="App">
+      <Toaster
+      position="top-center"
+      reverseOrder={false}
+      />
       <Logo/>
       <div className="contenedor-calculadora">
         <Pantalla
@@ -55,7 +70,7 @@ function App() {
               C
           </EliminarUltimoCaracter>
           
-          <BotonClear manejarClear={() => setInput('')}>
+          <BotonClear manejarClear={() => setInput('') }>
             Clear
           </BotonClear>
         </div>
