@@ -20,7 +20,9 @@ function App() {
     setInput(input + valor);
   };
   function OperacionMatematicaValida(input) {
-    const regex = /^[0-9]+([+\-*/][0-9]+)*$/;
+    // const regex = /^[0-9]+([+\-*/][0-9]+)*$/;
+    // const regex = /^(\d+(\.\d+)?[+\-*/]?)*\d+(\.\d+)?$/;
+    const regex = /^(\d+(\.\d+)?[+\-*/])+(\d+(\.\d+)?)?$/;
     return regex.test(input);
   };
   const validacion = OperacionMatematicaValida(input);
@@ -35,6 +37,7 @@ function App() {
       }
     }
     else{
+      setInput("INVALIDO!");
       toast.error("Por favor ingrese una operacion valida");
     }
   };
