@@ -41,7 +41,7 @@ function App() {
       setInput(input.slice(0, -1));
     }
   };
-  if (input == '') {
+  if (input) {
     indicador = true;
   }
   const agregarInputTeclado = (Newinput) => {
