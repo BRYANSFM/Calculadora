@@ -14,3 +14,7 @@
     margin:  1px solid #888;
     box-shadow: -1px 4px 1px 1px white;
 }
+
+.input::placeholder{
+    text-align: center;
+}

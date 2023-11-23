@@ -5,7 +5,6 @@ const Pantalla = ({ input, NuevoInput }) =>{
 
   const agregarInputTeclado = (e) => {
     NuevoInput(e.target.value);
-    console.log(e.target.value);
   };
   
   return(

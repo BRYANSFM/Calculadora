@@ -3,7 +3,6 @@ import Boton from "./componentes/Boton";
 import Pantalla from "./componentes/Pantalla";
 import BotonClear from "./componentes/BotonClear";
 import { EliminarUltimoCaracter } from "./componentes/EliminarUltimoCaracter";
-import { Logo } from "./componentes/Logo"
 import { useState } from "react";
 import { evaluate } from 'mathjs'; 
 import toast, { Toaster } from 'react-hot-toast';
@@ -20,8 +19,6 @@ function App() {
     setInput(input + valor);
   };
   function OperacionMatematicaValida(input) {
-    // const regex = /^[0-9]+([+\-*/][0-9]+)*$/;
-    // const regex = /^(\d+(\.\d+)?[+\-*/]?)*\d+(\.\d+)?$/;
     const regex = /^(\d+(\.\d+)?[+\-*/])+(\d+(\.\d+)?)?$/;
     return regex.test(input);
   };
@@ -31,9 +28,6 @@ function App() {
       if(input){
         setInput(evaluate(input)); 
         indicador = false;
-      }
-      else{
-        toast.error("Por favor ingrese valores para calcular");
       }
     }
     else{
@@ -59,8 +53,7 @@ function App() {
       <Toaster
       position="top-center"
       reverseOrder={false}
-      />
-      <Logo/>
+      />  
       <div className="contenedor-calculadora">
         <Pantalla
          input={input}

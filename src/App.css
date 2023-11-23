@@ -2,7 +2,7 @@
     width: 100%;
     height: 100vh;
     padding-top: 10px;
-    background-color: #1b1b32;
+    background-color: #060060;
     font-family: Lato, sans-serif;
     display: flex;
     flex-wrap: wrap;
@@ -20,7 +20,6 @@
 }
 
 .fila{
-    display: flex;
     margin: 4px;
     display: flex;
     align-items: center;
